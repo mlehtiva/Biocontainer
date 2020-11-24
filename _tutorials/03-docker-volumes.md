@@ -33,12 +33,13 @@ Pull the latest Docker image of *fastqc* if it is not already available on host 
 docker pull biocontainers/fastqc:v0.11.9_cv7
 
 ````
-copy few toy examples of fastq files from Puhti supercomputer as below:
+copy few toy examples of fastq files from Puhti supercomputer as below (use your own CSC username):
 
 ```
-scp csc-username@puhti.csc.fi:/scratch/project_2003682/Trinity/*.gz .
+scp your-csc-username@puhti.csc.fi:/scratch/project_2003682/Trinity/*.gz .
 
 ```
+> **Note**: Check that you have approved Allas and Puhti as services for this course project in [my.csc.fi](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 Run *fastqc* analaysis on some of example files as shown below:
 
