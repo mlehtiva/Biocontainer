@@ -32,13 +32,15 @@ gatk ToolName [tool args]
 ```ctrl+p then ctrl+q```
 
 ### Download example data
-You can download toy example dataset from CSC's allas objects storage:
+You can download toy example dataset from CSC's allas objects storage, unzip it and check the path to data:
 
 ```bash
 wget https://a3s.fi/Softwares/data.zip
+unzip data.zip
+pwd
 ```
 
-### Start running gatk container and mount the location of the data bundle inside the docker
+### Start running gatk container and mount the location of the data bundle inside the docker. Replace /path/data with the path to data.
 
 ``` docker run -v /path/data:/gatk/data -it broadinstitute/gatk:latest ```
 
