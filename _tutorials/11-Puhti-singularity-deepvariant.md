@@ -54,14 +54,15 @@ cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  /scratch/project_
 #SBATCH --partition=test
 #SBATCH --account=project_xxxx
 
-export TMPDIR=$PWD
+mkdir -p tmp
+export TMPDIR=$PWD/tmp
 
-singularity -s exec -B $PWD:/scratch/project_xxxx/$USER/Deepvariant_singularity  \
+singularity -s exec -B $PWD:/scratch/project_xxxx/$USER/Deepvariant_singularity \
 deepvariant_cpu.simg \
 /opt/deepvariant/bin/run_deepvariant \
 --model_type=WGS   --ref=/scratch/project_xxxx/$USER/Deepvariant_singularity/testdata/ucsc.hg19.chr20.unittest.fasta \
 --reads=/scratch/project_xxxx/$USER/Deepvariant_singularity/testdata/NA12878_S1.chr20.10_10p1mb.bam \
---regions "chr20:10,000,000-10,010,000"   --output_vcf=output.vcf.gz  \
+--regions "chr20:10,000,000-10,010,000"   --output_vcf=output.vcf.gz \
 --output_gvcf=output.g.vcf.gz
 ```
 
@@ -80,14 +81,15 @@ Please **note** that one can use gpu version of deepvariant with the following s
 #SBATCH --gres=gpu:v100:1
 #SBATCH --account=project_2003682
 
-export TMPDIR=$PWD
+mkdir -p tmp
+export TMPDIR=$PWD/tmp
 
-singularity -s exec --nv  -B $PWD:/scratch/project_2003682/$USER/Deepvariant_singularity  \
+singularity -s exec --nv  -B $PWD:/scratch/project_2003682/$USER/Deepvariant_singularity \
 deepvariant_gpu.simg \
 /opt/deepvariant/bin/run_deepvariant \
 --model_type=WGS   --ref=/scratch/project_2003682/$USER/Deepvariant_singularity/testdata/ucsc.hg19.chr20.unittest.fasta \
 --reads=/scratch/project_2003682/$USER/Deepvariant_singularity/testdata/NA12878_S1.chr20.10_10p1mb.bam \
---regions "chr20:10,000,000-10,010,000"   --output_vcf=outputi_gpu.vcf.gz  \
+--regions "chr20:10,000,000-10,010,000"   --output_vcf=outputi_gpu.vcf.gz \
 --output_gvcf=output_gpu.g.vcf.gz
 
 ```
